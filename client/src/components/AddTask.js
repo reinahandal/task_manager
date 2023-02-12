@@ -16,6 +16,7 @@ const AddTask = ({onAdd}) => {
             setReminder(false);
         }
     }
+
     return (
         <form className='add-form' onSubmit={(e)=>handleSubmit(e)}>
             <div className='form-control'>
