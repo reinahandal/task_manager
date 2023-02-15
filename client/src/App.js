@@ -1,8 +1,10 @@
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import { useState } from 'react'
 import AddTask from "./components/AddTask";
-
+import { Routes, Route } from 'react-router-dom';
+import About from "./components/About";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -35,7 +37,10 @@ function App() {
 
   return (
     <div className='container'>
-      <Header toggleForm={toggleForm} showForm={showForm}/>
+    <Header toggleForm={toggleForm} showForm={showForm}/>
+    <Routes>
+      <Route path="/" element={
+      <>
       {
         showForm ? 
         <AddTask onAdd={addTask}/>
@@ -45,6 +50,10 @@ function App() {
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 
       <h3>No tasks to show</h3>
       }
+      </>}/>
+      <Route path="/about" element={<About/>}/>
+    </Routes>
+    <Footer/>
     </div>
   );
 }
